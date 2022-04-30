@@ -1,0 +1,65 @@
+/* a minimalist set of CSS resets */
+
+/* default to border-box */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* adjust typography defaults */
+body {
+  margin: 1rem;
+  font-family: "Press Start 2P", monospace;
+  line-height: 1.5;
+  background: black;
+  color: hsla(130, 48%, 49%, 1);
+}
+
+/* images and videos max out at full width */
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+}
+h1 {
+  text-align: center;
+  font-size: 4rem;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+.cell {
+  height: 20vh;
+  width: 20vh;
+  text-align: center;
+}
+.allSquares  div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: 4px solid hsla(130, 48%, 49%, 1);
+  font-size: 6rem;
+}
+.allSquares div div:hover {
+  background: hsla(130, 48%, 49%, .9);
+  color: black;
+}
+.addX {
+  background: hsla(130, 48%, 49%, 1);
+  color:black;
+}
+.addO {
+  background: black;
+  color: hsla(130, 48%, 49%, 1);
+}
