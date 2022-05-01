@@ -17,9 +17,11 @@ body {
   line-height: 1.5;
   background: black;
   color: hsla(130, 48%, 49%, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* images and videos max out at full width */
 img,
 video {
   height: auto;
@@ -34,6 +36,9 @@ main {
 h1 {
   text-align: center;
   font-size: 4rem;
+}
+h2 {
+  font-size: 3rem;
 }
 .row {
   display: flex;
@@ -62,4 +67,56 @@ h1 {
 .addO {
   background: black;
   color: hsla(130, 48%, 49%, 1);
+}
+.spacer {
+  height: 1vh;
+}
+.modal {
+  position: relative;
+  width: 80%;
+  height: 40vh;
+  background: repeating-linear-gradient(90deg, black 0, hsla(130, 48%, 49%, .5) 1px, black 2px);
+  color: black;
+  position: fixed;
+  z-index: 2;
+  top: 35vh;
+  left: 10%;
+  animation-name: fuzz;
+  animation-duration: infinite;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+@keyframes fuzz {
+  0% {
+    background: repeating-linear-gradient(90deg, black 0, hsla(130, 48%, 49%, .5) 2px, black 4px);
+  }
+  33% {
+    background: repeating-linear-gradient(90deg, hsla(130, 48%, 49%, .5) 0, black 2px, hsla(130, 48%, 49%, 1) 4px);
+  }
+  66% {
+    background: repeating-linear-gradient(90deg, hsla(130, 48%, 49%, .5) 0px, black 2px, hsla(130, 48%, 49%, .5) 4px);
+  }
+}
+.modalContent {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: hsla(130, 48%, 49%, 1);
+  font-size: 2.6rem;
+  width: 100%;
+  height: 100%;
+}
+.modalButtons button {
+  text-align: center;
+  background-color: hsla(130, 48%, 49%, 1);
+  color: black;
+  font-size: 2rem;
+  padding: .4rem;
+  width: 40vh;
+  box-shadow: .1rem .2rem;
+  font-family: 'Press Start 2P', monospace;
+}
+.hidden {
+  display: none;
 }

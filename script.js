@@ -1,4 +1,4 @@
-/* Tic-Tac-Toe built with Matthew Sanabria, Vicky, Derek, & Kennedy of 100Devs */
+/* Tic-Tac-Toe built with Matthew Sanabria, Vicky, Derek, & Kennedy of 100Devs. Utterly ruined by yours truly. You're welcome. */
     class GameBoard {
         constructor() {
           this.idToCoordinate = {
@@ -21,11 +21,12 @@
           
           this.isX = true
           this.gameOver = false
-          // this.moveCount = 9;
+          this.spacesRemaining = 9
         }
         
         move(e) {
           if(!this.gameOver) {
+            this.spacesRemaining--;
             let t = this.idToCoordinate[e.target.id]
       
             // The position was already selected.
@@ -60,12 +61,25 @@
             statusElem.textContent = "WINNER X"
             // End the game
             this.gameOver = true
+            document.querySelector('p').innerText = '';
+            document.getElementById('status').innerText = '';
+            showModal("Congratulations, player X");
           }
-          if (this.checkWinner("O")) {
+          else if (this.checkWinner("O")) {
             statusElem.textContent = "WINNER O"
             
             // End the game
             this.gameOver = true
+            document.getElementById('status').innerText = '';
+            showModal('Congratulations, player O');
+          }
+          else if (this.spacesRemaining == 0) {
+            statusElem.textContent = "DRAW"
+          
+            this.gameOver = true
+            
+            document.getElementById('status').innerText = '';
+            showModal("It's a draw");
           }
         }
         
@@ -95,11 +109,27 @@
           return false
         }
       }
+      function showModal(winningMessage) {
+        document.querySelector('.modal').classList.remove('hidden');
+        document.querySelector('.modal').style.display = 'block';
+        document.querySelector('p').style.textAlign = 'center';
+        document.querySelector('p').innerText = winningMessage
+      }
+
+      function playAgain() {
+        document.location.reload();
+      }
       
+      function goHome() {
+        window.location.replace('https://jenanemone.netlify.app/games.html')
+      }
+
       let game = new GameBoard()
       
       document.querySelectorAll(".cell").forEach(element => element.addEventListener('click', (e) => game.move(e)))
       const statusElem = document.querySelector("#status")
       game.updateStatus(statusElem)
+      document.getElementById('playAgain').addEventListener('click', playAgain);
+      document.getElementById('goodbye').addEventListener('click',goHome);
       
       
